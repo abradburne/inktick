@@ -1,0 +1,19 @@
+[package]
+name = "inktick-sets"
+description = "Reads LCD-game ROM sets as MAME distributes them: zip and 7z archives, parents and clones, screens and artwork."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+inktick-core = { path = "../inktick-core" }
+inktick-art = { path = "../inktick-art" }
+# Deflate, for zip (MIT OR Zlib OR Apache-2.0).
+miniz_oxide = "0.8"
+# LZMA and LZMA2, for 7z (MIT).
+lzma-rs = "0.3"
+
+[lints]
+workspace = true

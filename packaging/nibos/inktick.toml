@@ -1,0 +1,84 @@
+# inktick, for DSlot (packaging/nibos/inktick.toml in inktick): installed as
+# /usr/share/dslot/emulators/inktick.toml. A test checks it declares exactly the options inktick
+# takes, so what DSlot shows and what inktick reads can't disagree.
+name = "inktick"
+priority = 100
+
+[systems]
+GW = ["/usr/bin/inktick", "{options}", "--saves", "{saves}", "{rom}"]
+
+# The sets inktick plays, with their titles (inktick --units, installed by the package): DSlot
+# names GW games by it and starts only these in inktick; the rest go to the next emulator.
+[games]
+GW = "/usr/share/inktick/units.tsv"
+
+[[options]]
+key = "view"
+label = "View"
+values = ["lcd", "unit", "plain"]
+labels = ["The screens, large", "The whole unit", "Plain LCD"]
+default = "lcd"
+args = ["--view", "{value}"]
+
+[[options]]
+key = "ghosting"
+label = "LCD response"
+values = ["unit", "slow", "off"]
+labels = ["As the unit", "Slow", "Instant"]
+default = "unit"
+args = ["--ghosting", "{value}"]
+
+[[options]]
+key = "shadow"
+label = "Segment shadows"
+values = ["soft", "deep", "off"]
+labels = ["Soft", "Deep", "Off"]
+default = "soft"
+args = ["--shadow", "{value}"]
+
+[[options]]
+key = "ink"
+label = "Segment contrast"
+kind = "number"
+min = 60
+max = 140
+step = 10
+unit = "%"
+default = 100
+args = ["--ink", "{value}"]
+
+[[options]]
+key = "sound"
+label = "Sound"
+values = ["piezo", "clean"]
+labels = ["Piezo", "Clean"]
+default = "piezo"
+args = ["--sound", "{value}"]
+
+[[options]]
+key = "clock"
+label = "The unit's clock"
+values = ["system", "own"]
+labels = ["Set from the system", "Its own"]
+default = "system"
+args = ["--clock", "{value}"]
+
+[[options]]
+key = "bottom"
+label = "Bottom screen in play"
+values = ["dim", "off", "on"]
+labels = ["Dim when idle", "Off when idle", "Always lit"]
+default = "dim"
+args = ["--bottom", "{value}"]
+
+[[options]]
+key = "resume"
+label = "Resume where I left off"
+kind = "toggle"
+default = true
+args = ["--resume"]
+off = ["--no-resume"]
+
+[[actions]]
+label = "Clear resume state"
+delete = ["{saves}/*.auto.state"]

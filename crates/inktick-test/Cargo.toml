@@ -1,0 +1,17 @@
+[package]
+name = "inktick-test"
+description = "Runs inktick-core headless: tests, golden runs, the input probe, PNG and WAV output."
+publish = false
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+inktick-core = { path = "../inktick-core" }
+inktick-art = { path = "../inktick-art" }
+inktick-sets = { path = "../inktick-sets" }
+
+[lints]
+workspace = true

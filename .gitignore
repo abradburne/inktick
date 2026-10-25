@@ -1,0 +1,7 @@
+/target/
+/config.local.sh
+/packaging/nibos/out/
+/sysroot/
+/dist/
+.DS_Store
+/.cargo/config.toml

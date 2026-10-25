@@ -1,0 +1,20 @@
+[package]
+name = "inktick-art"
+description = "LCD-game screens and artwork: the SVG segment screens, MAME layout files, and a renderer with LCD optics."
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+inktick-core = { path = "../inktick-core" }
+# XML for the SVG screens and layout files (MIT OR Apache-2.0).
+roxmltree = "0.21"
+# Anti-aliased path filling for the segments (BSD-3-Clause). Its PNG support is not used.
+tiny-skia = { version = "0.12", default-features = false, features = ["std", "simd"] }
+# Artwork pictures (MIT OR Apache-2.0).
+png = "0.17"
+
+[lints]
+workspace = true

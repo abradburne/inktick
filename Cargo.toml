@@ -1,0 +1,46 @@
+[workspace]
+members = [
+    "crates/inktick-core",
+    "crates/inktick-art",
+    "crates/inktick-sets",
+    "crates/inktick-test",
+    "crates/inktick",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.87"
+license = "MIT OR Apache-2.0"
+authors = ["Alan Bradburne"]
+
+[workspace.lints.rust]
+missing_docs = "warn"
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+# 4-bit registers in 8-bit integers: narrowing casts are the norm.
+cast_possible_truncation = "allow"
+
+[profile.test]
+opt-level = 3
+
+[profile.dev.package.inktick-core]
+opt-level = 2
+
+[profile.dev.package.tiny-skia]
+opt-level = 3
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+# Release with symbols, for profilers: cargo build --profile profiling.
+[profile.profiling]
+inherits = "release"
+strip = false
+debug = 1
