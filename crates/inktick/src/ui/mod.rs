@@ -455,6 +455,7 @@ impl Ui {
         let (rows, does): (Vec<Row>, Vec<Does>) = rows.into_iter().unzip();
         let mut menu = Menu {
             tabs: self.tabs(m),
+            sections: Vec::new(),
             title,
             row: row.min(rows.len().saturating_sub(1)),
             scroll,

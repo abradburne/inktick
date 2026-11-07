@@ -58,6 +58,7 @@ impl Picker {
         let sep = "   \u{b7}   ";
         let menu = Menu {
             tabs: Vec::new(),
+            sections: Vec::new(),
             title: if games.is_empty() {
                 "NO UNITS IN ROMS/GW ON EITHER CARD".into()
             } else {
